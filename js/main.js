@@ -1,0 +1,22 @@
+const NO="971505140680",$=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const wa=m=>"https://wa.me/"+NO+"?text="+encodeURIComponent(m);
+$$(".wl").forEach(a=>{a.href=wa(a.dataset.m||"Hello Pink Pie Beauty Salon, I would like to enquire about an appointment.");a.target="_blank";a.rel="noopener"});
+const P={"Hair Care":[["Keratin treatment (Brazilian keratin)","600 up"],["Cellophane",100],["Hair cut",50],["Hair trim",40],["Hair cut with wash",70],["Wash and blow dry","50 up"],["Highlights","150 up"],["Roots color",80],["Full colors","200 up"],["Hot oil massage",45],["Hair spa",80],["Hair curl","80 up"],["Hair iron","40 up"],["Rebonding","250 up"],["Henna color normal","70 up"],["Kid's hair cut",30]],
+"Nail Care":[["Gel polish",50],["Gel polish with french",120],["Manicure",35],["Pedicure",35],["Pedicure with French polish",45],["Paraffin manicure",50],["Paraffin pedicure",60],["Foot massage",50],["Gel polish remover",30],["Acrylic nails",100],["Glitter nails",80]],
+"Facial Care":[["Facial normal",50],["Flower facial",100],["Gold facial",120],["Herbal facial",70],["Pearl facial",130],["Diamond facial",140],["Facial cleanup",45],["Face bleach",25],["Face scrub",25]],
+"Wax & Threading":[["Eyebrows threading",10],["Eyebrow threading with color",45],["Full face threading",50],["Full hand wax with under arm",45],["Full legs wax",60],["Under arms",15],["Lips & chin threading",15],["Paraffin wax (hand)",60],["Paraffin wax (legs)",70],["Shama wax (hand)",75],["Shama wax (leg)",85],["Full body wax",250],["Face wax with eyebrows",55],["Face wax",45]]};
+$("#pg").innerHTML=Object.entries(P).map(([k,v])=>`<div class="pc"><h3>${k.replace("&","&amp;")}</h3><ul>${v.map(([a,b])=>`<li><span>${a.replace("&","&amp;")}</span><b>${b} dhs</b></li>`).join("")}</ul></div>`).join("");
+const S=[["Hair","Ladies Haircut","Cuts and layers shaped to suit you."],["Hair","Blow Dry","Professional wash and blow dry styling."],["Hair","Hair Coloring","Full colour, roots and highlights."],["Hair","Hair Treatment","Hair spa and hot oil care."],["Hair","Keratin Treatment","Smooth, polished and manageable hair with professional salon care."],["Nails","Manicure","Neat, polished hands."],["Nails","Gel Pedicure","Gel polish pedicure for lasting colour."],["Beauty","Anti-Aging Facial","Facial care for your skin."],["Beauty","Eyebrow Threading","Clean, defined brows."],["Beauty","Threading","Face threading services."],["Beauty","Eyelash Extensions","Enquire for details."],["Beauty","Waxing Services","Hands, legs, face and full body."],["Bridal","Bridal Makeup","Beauty preparation for your special day."]];
+$("#sg").innerHTML=S.map(([c,n,d])=>`<div class="sc"><small>${c}</small><h3>${n}</h3><p>${d}</p><a href="#book" data-s="${n}">Book Now →</a></div>`).join("");
+$("#ss").innerHTML=[...S.map(s=>s[1]),"Other"].map(x=>`<option>${x}</option>`).join("");
+$$("[data-s]").forEach(a=>a.onclick=()=>$("#ss").value=a.dataset.s);
+$("#f").onsubmit=e=>{e.preventDefault();const d=new FormData(e.target),g=k=>d.get(k)||"-";
+open(wa(`Hello Pink Pie Beauty Salon, I would like to book an appointment.\n\nName: ${g("n")}\nPhone: ${g("p")}\nWhatsApp: ${g("w")}\nPreferred Date: ${g("d")}\nPreferred Time: ${g("t")}\nService: ${g("s")}\nMessage: ${g("m")}`),"_blank")};
+const nv=$("#nv");addEventListener("scroll",()=>nv.classList.toggle("s",scrollY>40),{passive:true});
+$("#mb").onclick=()=>$("#lk").classList.toggle("on");$$("#lk a").forEach(a=>a.onclick=()=>$("#lk").classList.remove("on"));
+const lb=$("#lb");const show=s=>{lb.querySelector("img").src=s;lb.classList.add("on")};
+$$("#gl img").forEach(i=>i.onclick=()=>show(i.src));$$("[data-lb]").forEach(b=>b.onclick=()=>show(b.dataset.lb));
+lb.onclick=()=>lb.classList.remove("on");addEventListener("keydown",e=>e.key==="Escape"&&lb.classList.remove("on"));
+$$("#fl button").forEach(b=>b.onclick=()=>{$$("#fl button").forEach(x=>x.classList.toggle("on",x==b));$$("#gl figure").forEach(f=>f.style.display=b.dataset.c=="all"||f.dataset.c==b.dataset.c?"":"none")});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;io.unobserve(e.target);e.target.classList.add("in");const n=e.target.dataset.n;if(n){const t=+n,dc=+(e.target.dataset.d||0),t0=performance.now();(function f(now){const p=Math.min((now-t0)/1200,1);e.target.textContent=(t*p).toFixed(dc);if(p<1)requestAnimationFrame(f)})(t0)}}),{threshold:.2});
+$$(".fu,[data-n]").forEach(e=>io.observe(e));
